@@ -16,10 +16,10 @@ sleep 5
 if [ -n "$DISPLAY" ] || [ -n "$WAYLAND_DISPLAY" ]; then
   # Running in a Desktop Environment (Ubuntu, Pi OS Desktop, etc)
   echo "Desktop environment detected. Starting RÚV stream..."
-  exec cvlc --fullscreen --no-osd --loop --network-caching=5000 --sub-language=is --sub-track=0 "$STREAM_URL"
+  exec cvlc --quiet --fullscreen --no-osd --loop --network-caching=5000 --sub-language=is --sub-track=0 "$STREAM_URL"
 else
   # Running Headless (Raspberry Pi OS Lite, Server, etc)
   # -V drm : Use direct rendering to framebuffer (best for Pi OS Lite)
   echo "Headless environment detected. Starting RÚV stream via DRM..."
-  exec cvlc --fullscreen --no-osd --loop --network-caching=5000 --sub-language=is --sub-track=0 -V drm "$STREAM_URL"
+  exec cvlc --quiet --fullscreen --no-osd --loop --network-caching=5000 --sub-language=is --sub-track=0 -V drm "$STREAM_URL"
 fi
