@@ -1,0 +1,21 @@
+[Unit]
+Description=RÚV VLC Kiosk Service
+# Ensure network is up before attempting to start
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+User=pi
+# Note: If your username is not 'pi', change it here and below!
+ExecStart=/home/pi/ruv-kiosk.sh
+
+# Automatically restart if VLC crashes or exits
+Restart=always
+RestartSec=5
+
+# Give it access to the video hardware (DRM/KMS)
+SupplementaryGroups=video render
+
+[Install]
+WantedBy=multi-user.target
