@@ -58,3 +58,6 @@ To guarantee audio always goes to the right place:
 If the user needs wireless headphones *and* TV speakers simultaneously, the most reliable method is to plug the wireless headphone transmitter directly into the **TV's Audio Out / Headphone port** rather than the Raspberry Pi. The TV will automatically split the HDMI audio to both the speakers and the headphones.
 
 *Note: If you ever need to update the system or change the script, you must run `sudo raspi-config` and disable the Overlay File System first, make your changes, and then re-enable it.*
+
+## License
+This project is free, open-source software licensed under the [MIT License](LICENSE). You are free to use, modify, and distribute it.

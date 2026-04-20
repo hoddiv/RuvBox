@@ -58,3 +58,6 @@ Til að tryggja að hljóðið fari alltaf á réttan stað:
 Ef það þarf bæði þráðlaus heyrnartól *og* hljóð úr sjónvarpinu á sama tíma, er langbesta leiðin að stinga sendinum fyrir þráðlausu heyrnartólin beint í **heyrnartólstengið á sjónvarpinu sjálfu** (Audio Out) í stað þess að nota Raspberry Pi tölvuna. Sjónvarpið mun þá sjá um að deila HDMI hljóðinu í hátalarana og heyrnartólin á sama tíma.
 
 *Athugaðu: Ef þú þarft einhvern tímann að uppfæra kerfið eða breyta forritinu þarftu að keyra `sudo raspi-config` og slökkva á Overlay File System fyrst, gera breytingarnar og virkja það svo aftur.*
+
+## Leyfi (License)
+Þetta er opinn og ókeypis hugbúnaður gefinn út undir [MIT leyfinu](LICENSE). Þér er frjálst að nota, breyta og dreifa honum að vild.
