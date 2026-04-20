@@ -41,4 +41,14 @@ To make it an unbreakable appliance, you must make the file system read-only so 
 3. Select **Yes** to enable the overlay, and **Yes** to make the boot partition read-only.
 4. Reboot.
 
+### 5. Audio Configuration (Optional)
+By default, the Raspberry Pi auto-detects audio. If it boots before the TV is fully on, it might mistakenly switch audio to the 3.5mm headphone jack instead of HDMI. 
+To guarantee audio always goes to the right place:
+1. Run `sudo raspi-config`
+2. Navigate to **System Options** -> **Audio**.
+3. Hard-code your output by selecting either **HDMI** or **Headphones** (3.5mm jack).
+
+**Note on Wireless Headphones for Seniors:** 
+If the user needs wireless headphones *and* TV speakers simultaneously, the most reliable method is to plug the wireless headphone transmitter directly into the **TV's Audio Out / Headphone port** rather than the Raspberry Pi. The TV will automatically split the HDMI audio to both the speakers and the headphones.
+
 *Note: If you ever need to update the system or change the script, you must run `sudo raspi-config` and disable the Overlay File System first, make your changes, and then re-enable it.*

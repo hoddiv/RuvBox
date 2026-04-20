@@ -41,4 +41,14 @@ Til að gera tækið algjörlega óbrjótanlegt verður þú að gera skráarker
 3. Veldu **Yes** til að virkja overlay, og **Yes** til að gera boot diskinn skrifvarinn.
 4. Endurræstu tölvuna.
 
+### 5. Hljóðstillingar (Valfrjálst)
+Sjálfgefið reynir Raspberry Pi að skynja hljóðið sjálfkrafa. Ef hún ræsir sig áður en kveikt er á sjónvarpinu getur hún óvart sent hljóðið á 3.5mm heyrnartólstengið í stað HDMI.
+Til að tryggja að hljóðið fari alltaf á réttan stað:
+1. Keyrðu `sudo raspi-config`
+2. Farðu í **System Options** -> **Audio**.
+3. Veldu handvirkt hvort þú vilt nota **HDMI** eða **Headphones** (3.5mm tengið).
+
+**Athugasemd um þráðlaus heyrnartól:**
+Ef það þarf bæði þráðlaus heyrnartól *og* hljóð úr sjónvarpinu á sama tíma, er langbesta leiðin að stinga sendinum fyrir þráðlausu heyrnartólin beint í **heyrnartólstengið á sjónvarpinu sjálfu** (Audio Out) í stað þess að nota Raspberry Pi tölvuna. Sjónvarpið mun þá sjá um að deila HDMI hljóðinu í hátalarana og heyrnartólin á sama tíma.
+
 *Athugaðu: Ef þú þarft einhvern tímann að uppfæra kerfið eða breyta forritinu þarftu að keyra `sudo raspi-config` og slökkva á Overlay File System fyrst, gera breytingarnar og virkja það svo aftur.*
