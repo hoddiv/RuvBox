@@ -14,6 +14,8 @@ Instead of using a complex media center like Kodi, this setup uses Raspberry Pi 
 *   **Raspberry Pi (3, 4, or 5):** Ideal for a dedicated TV appliance.
 *   **Any Linux PC:** The script automatically detects your environment. It can be run on Ubuntu, Debian, Linux Mint, or an old laptop!
 
+*(Looking for the older LibreELEC/Kodi version? You can find it in the `kodi-edition/` directory).*
+
 ## Installation
 
 ### 1. Flash Raspberry Pi OS Lite

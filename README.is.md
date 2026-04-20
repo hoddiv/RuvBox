@@ -14,6 +14,8 @@
 *   **Raspberry Pi (3, 4, eða 5):** Fullkomið fyrir sjónvarpstæki.
 *   **Hvaða Linux tölva sem er:** Forritið skynjar sjálfkrafa umhverfið þitt. Það er hægt að keyra það á Ubuntu, Debian, Linux Mint eða gömlu fartölvunni!
 
+*(Ertu að leita að eldri LibreELEC/Kodi útgáfunni? Þú finnur hana í `kodi-edition/` möppunni).*
+
 ## Uppsetning
 
 ### 1. Skrifaðu Raspberry Pi OS Lite
