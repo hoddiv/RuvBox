@@ -5,6 +5,9 @@
 This is the **ultra-resilient, read-only** version of the RÚV appliance. 
 Instead of using a complex media center like Kodi, this setup uses Raspberry Pi OS Lite and VLC to create a true, unbreakable "dumb TV".
 
+## The Story Behind This
+I built this project to solve a very specific problem for my elderly grandparents. Modern smart TVs and streaming apps have become incredibly complex, requiring multiple remotes and confusing menu navigation just to watch the evening news. They just wanted to turn on the TV and watch RÚV with Icelandic subtitles—no menus, no apps, no fuss. This appliance does exactly that.
+
 ## Why this version?
 *   **No UI to break:** There are no menus. It boots straight into the fullscreen stream.
 *   **Immune to power cuts:** By enabling OverlayFS, the SD card becomes read-only. You can unplug it from the wall 10,000 times and it will never corrupt.
@@ -13,6 +16,7 @@ Instead of using a complex media center like Kodi, this setup uses Raspberry Pi 
 ## Hardware Requirements
 *   **Raspberry Pi (3, 4, or 5):** Ideal for a dedicated TV appliance.
 *   **Any Linux PC:** The script automatically detects your environment. It can be run on Ubuntu, Debian, Linux Mint, or an old laptop!
+*   **Mini PCs & SBCs:** Works perfectly on cheap Intel NUCs or other single-board computers like Orange Pi or Odroid running a Debian-based OS. You can even use this setup for professional digital signage just by swapping out the stream URL.
 
 *(Looking for the older LibreELEC/Kodi version? You can find it in the `kodi-edition/` directory).*
 

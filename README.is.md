@@ -5,6 +5,9 @@
 Þetta er **ofur-örugga, skrifvarða (read-only)** útgáfan af RÚV tækinu.
 Í stað þess að nota flókið margmiðlunarkerfi eins og Kodi, notar þessi uppsetning Raspberry Pi OS Lite og VLC til að búa til "heimskt sjónvarp" sem er nánast ómögulegt að skemma.
 
+## Sagan á bakvið verkefnið
+Ég bjó þetta til til að leysa vandamál fyrir eldri ömmu mína og afa. Nútíma snjallsjónvörp og streymisveitur eru orðnar allt of flóknar, þar sem þarf að nota margar fjarstýringar og vafra um flóknar valmyndir bara til að horfa á fréttirnar. Þau vildu einfaldlega geta kveikt á sjónvarpinu og horft á RÚV með íslenskum texta—engar valmyndir, engin öpp, ekkert vesen. Þetta tæki gerir nákvæmlega það.
+
 ## Af hverju þessi útgáfa?
 *   **Ekkert viðmót til að skemma:** Það eru engar valmyndir. Tækið ræsir sig beint í beina útsendingu á öllum skjánum.
 *   **Ónæmt fyrir rafmagnsleysi:** Með því að virkja OverlayFS verður SD kortið skrifvarið. Þú getur tekið tækið úr sambandi við vegg 10.000 sinnum og það mun aldrei skemmast.
@@ -13,6 +16,7 @@
 ## Vélbúnaður sem þarf
 *   **Raspberry Pi (3, 4, eða 5):** Fullkomið fyrir sjónvarpstæki.
 *   **Hvaða Linux tölva sem er:** Forritið skynjar sjálfkrafa umhverfið þitt. Það er hægt að keyra það á Ubuntu, Debian, Linux Mint eða gömlu fartölvunni!
+*   **Mini PC & aðrar smátölvur:** Virkar frábærlega á ódýrum Intel NUC eða öðrum smátölvum eins og Orange Pi sem keyra Debian. Það er meira að segja hægt að nota þennan kóða fyrir stafræn skilti (digital signage) með því að skipta út streymisslóðinni.
 
 *(Ertu að leita að eldri LibreELEC/Kodi útgáfunni? Þú finnur hana í `kodi-edition/` möppunni).*
 
