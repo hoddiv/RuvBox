@@ -1,31 +1,54 @@
-# Ruvbox - Sjálfvirk RÚV Spilun
+# Ruvbox - VLC Kiosk Útgáfa
 
 *[Click here for English](README.md)*
 
-Ruvbox er einföld Kodi (LibreELEC) uppsetning sem breytir Raspberry Pi tölvu í sérhæft tæki sem spilar beina útsendingu [RÚV](https://www.ruv.is/) sjálfkrafa um leið og kveikt er á því.
+Þetta er **ofur-örugga, skrifvarða (read-only)** útgáfan af RÚV tækinu.
+Í stað þess að nota flókið margmiðlunarkerfi eins og Kodi, notar þessi uppsetning Raspberry Pi OS Lite og VLC til að búa til "heimskt sjónvarp" sem er nánast ómögulegt að skemma.
 
-Þetta er fullkomin lausn fyrir eldra fólk eða hvern sem er sem vill bara geta kveikt á sjónvarpinu og horft á RÚV án þess að þurfa að flakka um í flóknum valmyndum eða öppum.
+## Af hverju þessi útgáfa?
+*   **Ekkert viðmót til að skemma:** Það eru engar valmyndir. Tækið ræsir sig beint í beina útsendingu á öllum skjánum.
+*   **Ónæmt fyrir rafmagnsleysi:** Með því að virkja OverlayFS verður SD kortið skrifvarið. Þú getur tekið tækið úr sambandi við vegg 10.000 sinnum og það mun aldrei skemmast.
+*   **Léttkeyrandi:** Keyrir á lágmarks stýrikerfi án skjáborðsumhverfis (desktop), sem sparar minni og gerir það að verkum að það ræsir sig hraðar.
 
-## Eiginleikar
-*   **Sjálfvirk spilun:** Byrjar að spila beina útsendingu RÚV um leið og Kodi hefur ræst sig.
-*   **Góð streymisgæði:** Notar `inputstream.adaptive` til að meðhöndla HLS streymi á mjúkan hátt og stillir myndgæði sjálfkrafa miðað við nethraða.
-*   **Snjöll tenging:** Innbyggða Python þjónustan bíður eftir nettengingu áður en hún reynir að spila, og reynir aftur á öruggan hátt ef streymið hleðst ekki inn í fyrstu tilraun.
-*   **Bætt biðminni (Buffering):** Inniheldur sérsniðið `advancedsettings.xml` skjal sem bætir biðminni (cache) fyrir myndbönd til að koma í veg fyrir hökt á óstöðugu Wi-Fi neti.
+## Vélbúnaður sem þarf
+*   **Raspberry Pi (3, 4, eða 5):** Fullkomið fyrir sjónvarpstæki.
+*   **Hvaða Linux tölva sem er:** Forritið skynjar sjálfkrafa umhverfið þitt. Það er hægt að keyra það á Ubuntu, Debian, Linux Mint eða gömlu fartölvunni!
 
-## Skrár og möppur
-*   `src/service.autoplay/` - Sérsniðna Kodi Python viðbótin sem sér um sjálfvirku ræsinguna.
-*   `config/ruv_live.strm` - Kodi streymisskráin sem vísar á RÚV streymið.
-*   `config/advancedsettings_kodi20.xml` - Bestun á biðminni fyrir Kodi v17-v20.
+## Uppsetning
 
-## Uppsetningarleiðbeiningar
+### 1. Skrifaðu Raspberry Pi OS Lite
+Notaðu [Raspberry Pi Imager](https://www.raspberrypi.com/software/) til að skrifa **Raspberry Pi OS Lite (64-bit)** (finnst undir *Raspberry Pi OS (other)*). 
+*Áður en þú skrifar*, smelltu á tannhjólið (OS Customisation) og:
+*   Stilltu notandanafn (t.d. `pi`) og lykilorð.
+*   Stilltu Wi-Fi netið þitt.
+*   Virkjaðu SSH.
 
-1.  **Settu upp LibreELEC:** Skrifaðu LibreELEC á SD kort fyrir Raspberry Pi með því að nota [Raspberry Pi Imager](https://www.raspberrypi.com/software/) eða [LibreELEC USB-SD Creator](https://libreelec.tv/downloads/).
-2.  **Virkjaðu SSH/Samba:** Í upphaflegu LibreELEC uppsetningarvalmyndinni, vertu viss um að virkja SSH eða Samba deilingu svo þú getir flutt skrár yfir á Pi tölvuna.
-3.  **Færðu skrárnar:**
-    *   Afritaðu `config/ruv_live.strm` í `/storage/` möppuna á Raspberry Pi.
-    *   Afritaðu `src/service.autoplay` möppuna í `/storage/.kodi/addons/` möppuna.
-    *   *(Valfrjálst)* Ef þú ert að nota Kodi v17-v20, endurnefndu `config/advancedsettings_kodi20.xml` í `advancedsettings.xml` og settu það í `/storage/.kodi/userdata/`. *(Athugaðu: Fyrir Kodi v21 Omega, á að stilla biðminni (caching) í gegnum Kodi valmyndina í Settings > Services > Caching í staðinn).*
-4.  **Endurræstu:** Endurræstu Raspberry Pi tölvuna. `service.autoplay` viðbótin mun hlaðast inn sjálfkrafa, bíða eftir nettengingu, og hefja RÚV streymið!
+### 2. Afritaðu skrárnar
+Kveiktu á Raspberry Pi og notaðu SCP/SFTP forrit (eins og FileZilla eða WinSCP) til að afrita alla þessa `pi3b-VLC` möppu inn í heimasvæðið á Pi tölvunni (t.d. `/home/pi/pi3b-VLC`).
 
-## Leyfi
-Opinn hugbúnaður, gefinn út fyrir samfélagið.
+### 3. Keyrðu uppsetningarforritið
+Tengdu þig við Raspberry Pi í gegnum SSH og keyrðu:
+```bash
+cd pi3b-VLC
+sudo ./install.sh
+```
+Forritið mun setja upp VLC, stilla sjálfvirka ræsingu og byrja að spila streymið.
+
+### 4. Læstu kerfinu (Sérstaklega mikilvægt!)
+Til að gera tækið algjörlega óbrjótanlegt verður þú að gera skráarkerfið skrifvarið svo það sé óhætt að taka það úr sambandi:
+1. Keyrðu `sudo raspi-config`
+2. Farðu í **Advanced Options** (eða **Performance Options** á nýrri útgáfum) -> **Overlay File System**.
+3. Veldu **Yes** til að virkja overlay, og **Yes** til að gera boot diskinn skrifvarinn.
+4. Endurræstu tölvuna.
+
+### 5. Hljóðstillingar (Valfrjálst)
+Sjálfgefið reynir Raspberry Pi að skynja hljóðið sjálfkrafa. Ef hún ræsir sig áður en kveikt er á sjónvarpinu getur hún óvart sent hljóðið á 3.5mm heyrnartólstengið í stað HDMI.
+Til að tryggja að hljóðið fari alltaf á réttan stað:
+1. Keyrðu `sudo raspi-config`
+2. Farðu í **System Options** -> **Audio**.
+3. Veldu handvirkt hvort þú vilt nota **HDMI** eða **Headphones** (3.5mm tengið).
+
+**Athugasemd um þráðlaus heyrnartól:**
+Ef það þarf bæði þráðlaus heyrnartól *og* hljóð úr sjónvarpinu á sama tíma, er langbesta leiðin að stinga sendinum fyrir þráðlausu heyrnartólin beint í **heyrnartólstengið á sjónvarpinu sjálfu** (Audio Out) í stað þess að nota Raspberry Pi tölvuna. Sjónvarpið mun þá sjá um að deila HDMI hljóðinu í hátalarana og heyrnartólin á sama tíma.
+
+*Athugaðu: Ef þú þarft einhvern tímann að uppfæra kerfið eða breyta forritinu þarftu að keyra `sudo raspi-config` og slökkva á Overlay File System fyrst, gera breytingarnar og virkja það svo aftur.*

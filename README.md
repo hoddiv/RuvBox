@@ -1,31 +1,54 @@
-# Ruvbox - Automated RÚV Appliance
+# Ruvbox - VLC Kiosk Edition
 
 *[Smelltu hér fyrir íslensku (Icelandic)](README.is.md)*
 
-Ruvbox is a lightweight Kodi (LibreELEC) setup designed to turn a Raspberry Pi into a dedicated "appliance" that automatically plays the [RÚV](https://www.ruv.is/) (Icelandic National Broadcasting Service) live stream on boot. 
+This is the **ultra-resilient, read-only** version of the RÚV appliance. 
+Instead of using a complex media center like Kodi, this setup uses Raspberry Pi OS Lite and VLC to create a true, unbreakable "dumb TV".
 
-It is perfect for seniors or anyone who wants a TV to simply turn on and play RÚV without the need to navigate through complex menus or apps.
+## Why this version?
+*   **No UI to break:** There are no menus. It boots straight into the fullscreen stream.
+*   **Immune to power cuts:** By enabling OverlayFS, the SD card becomes read-only. You can unplug it from the wall 10,000 times and it will never corrupt.
+*   **Lightweight:** Runs on a minimal operating system without a desktop environment, saving memory and booting faster.
 
-## Features
-*   **Zero-Click Operation:** Starts the RÚV live stream automatically as soon as Kodi finishes booting.
-*   **Resilient Streaming:** Uses `inputstream.adaptive` to smoothly handle HLS streaming and automatically adjust video quality based on network conditions.
-*   **Connection Retry Logic:** Built-in Python service waits for network connectivity before attempting to play, and safely retries if the stream fails to load initially.
-*   **Optimized Buffering:** Includes custom `advancedsettings.xml` to enhance video caching and prevent stuttering on unstable Wi-Fi.
+## Hardware Requirements
+*   **Raspberry Pi (3, 4, or 5):** Ideal for a dedicated TV appliance.
+*   **Any Linux PC:** The script automatically detects your environment. It can be run on Ubuntu, Debian, Linux Mint, or an old laptop!
 
-## Directory Structure
-*   `src/service.autoplay/` - The custom Kodi Python add-on that handles the boot automation.
-*   `config/ruv_live.strm` - The Kodi stream file pointing to the RÚV HLS feed.
-*   `config/advancedsettings_kodi20.xml` - Cache optimizations for Kodi v17-v20.
+## Installation
 
-## Installation Instructions
+### 1. Flash Raspberry Pi OS Lite
+Use the [Raspberry Pi Imager](https://www.raspberrypi.com/software/) to flash **Raspberry Pi OS Lite (64-bit)** (found under *Raspberry Pi OS (other)*). 
+*Before writing*, click the gear icon (OS Customisation) and:
+*   Set a username (e.g., `pi`) and password.
+*   Configure your Wi-Fi settings.
+*   Enable SSH.
 
-1.  **Install LibreELEC:** Flash LibreELEC onto a Raspberry Pi SD card using the [Raspberry Pi Imager](https://www.raspberrypi.com/software/) or the [LibreELEC USB-SD Creator](https://libreelec.tv/downloads/).
-2.  **Enable SSH/Samba:** During the initial LibreELEC setup wizard, ensure SSH or Samba sharing is enabled so you can transfer files to the Pi.
-3.  **Transfer Files:**
-    *   Copy `config/ruv_live.strm` to the `/storage/` directory on your Raspberry Pi.
-    *   Copy the `src/service.autoplay` folder to the `/storage/.kodi/addons/` directory.
-    *   *(Optional)* If you are on Kodi v17-v20, rename `config/advancedsettings_kodi20.xml` to `advancedsettings.xml` and place it in `/storage/.kodi/userdata/`. *(Note: For Kodi v21 Omega, configure caching via the Kodi GUI in Settings > Services > Caching instead).*
-4.  **Reboot:** Restart the Raspberry Pi. The `service.autoplay` add-on will load automatically, wait for the network, and launch the RÚV stream!
+### 2. Copy the files
+Turn on the Raspberry Pi and use SCP/SFTP (like FileZilla or WinSCP) to copy this entire `pi3b-VLC` folder into the home directory of the Pi (e.g., `/home/pi/pi3b-VLC`).
 
-## License
-Open source and provided as-is for the community.
+### 3. Run the installer
+SSH into the Raspberry Pi and run:
+```bash
+cd pi3b-VLC
+sudo ./install.sh
+```
+The script will install VLC, configure the automatic boot service, and start the stream.
+
+### 4. Harden the system (Crucial!)
+To make it an unbreakable appliance, you must make the file system read-only so you can safely pull the power plug:
+1. Run `sudo raspi-config`
+2. Navigate to **Advanced Options** (or **Performance Options** on newer versions) -> **Overlay File System**.
+3. Select **Yes** to enable the overlay, and **Yes** to make the boot partition read-only.
+4. Reboot.
+
+### 5. Audio Configuration (Optional)
+By default, the Raspberry Pi auto-detects audio. If it boots before the TV is fully on, it might mistakenly switch audio to the 3.5mm headphone jack instead of HDMI. 
+To guarantee audio always goes to the right place:
+1. Run `sudo raspi-config`
+2. Navigate to **System Options** -> **Audio**.
+3. Hard-code your output by selecting either **HDMI** or **Headphones** (3.5mm jack).
+
+**Note on Wireless Headphones for Seniors:** 
+If the user needs wireless headphones *and* TV speakers simultaneously, the most reliable method is to plug the wireless headphone transmitter directly into the **TV's Audio Out / Headphone port** rather than the Raspberry Pi. The TV will automatically split the HDMI audio to both the speakers and the headphones.
+
+*Note: If you ever need to update the system or change the script, you must run `sudo raspi-config` and disable the Overlay File System first, make your changes, and then re-enable it.*
