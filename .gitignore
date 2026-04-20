@@ -1,0 +1,6 @@
+# Ignore LibreELEC backup folders and huge system images
+pi3b-VLC/
+pi4-LibreElec_kodi/
+*.img.gz
+*.img
+*.tar

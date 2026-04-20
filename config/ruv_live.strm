@@ -1,0 +1,3 @@
+#KODIPROP:inputstream=inputstream.adaptive
+#KODIPROP:inputstream.adaptive.manifest_type=hls
+https://ruvlive.akamaized.net/out/v1/317f60ed57214a39872eacca6fa96f2d/index.m3u8
