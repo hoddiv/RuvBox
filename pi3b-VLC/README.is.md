@@ -11,8 +11,8 @@
 *   **Léttkeyrandi:** Keyrir á lágmarks stýrikerfi án skjáborðsumhverfis (desktop), sem sparar minni og gerir það að verkum að það ræsir sig hraðar.
 
 ## Vélbúnaður sem þarf
-*   Raspberry Pi (3, 4, eða 5)
-*   MicroSD Kort
+*   **Raspberry Pi (3, 4, eða 5):** Fullkomið fyrir sjónvarpstæki.
+*   **Hvaða Linux tölva sem er:** Forritið skynjar sjálfkrafa umhverfið þitt. Það er hægt að keyra það á Ubuntu, Debian, Linux Mint eða gömlu fartölvunni!
 
 ## Uppsetning
 
