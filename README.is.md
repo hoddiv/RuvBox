@@ -6,7 +6,7 @@
 Í stað þess að nota flókið margmiðlunarkerfi eins og Kodi, notar þessi uppsetning Raspberry Pi OS Lite og VLC til að búa til "heimskt sjónvarp" sem er nánast ómögulegt að skemma.
 
 ## Sagan á bakvið verkefnið
-Ég bjó þetta til til að leysa vandamál fyrir eldri ömmu mína og afa. Nútíma snjallsjónvörp og streymisveitur eru orðnar allt of flóknar, þar sem þarf að nota margar fjarstýringar og vafra um flóknar valmyndir bara til að horfa á fréttirnar. Þau vildu einfaldlega geta kveikt á sjónvarpinu og horft á RÚV með íslenskum texta—engar valmyndir, engin öpp, ekkert vesen. Þetta tæki gerir nákvæmlega það.
+Ég bjó þetta til til að leysa vandamál fyrir eldri ættmenni. Nútíma snjallsjónvörp og streymisveitur eru orðnar allt of flóknar, þar sem þarf að nota margar fjarstýringar og vafra um flóknar valmyndir bara til að horfa á fréttirnar. Þau vildu einfaldlega geta kveikt á sjónvarpinu og horft á RÚV með íslenskum texta—engar valmyndir, engin öpp, ekkert vesen. Þetta tæki gerir nákvæmlega það.
 
 ## Af hverju þessi útgáfa?
 *   **Ekkert viðmót til að skemma:** Það eru engar valmyndir. Tækið ræsir sig beint í beina útsendingu á öllum skjánum.

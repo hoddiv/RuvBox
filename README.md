@@ -6,7 +6,7 @@ This is the **ultra-resilient, read-only** version of the RÚV appliance.
 Instead of using a complex media center like Kodi, this setup uses Raspberry Pi OS Lite and VLC to create a true, unbreakable "dumb TV".
 
 ## The Story Behind This
-I built this project to solve a very specific problem for my elderly grandparents. Modern smart TVs and streaming apps have become incredibly complex, requiring multiple remotes and confusing menu navigation just to watch the evening news. They just wanted to turn on the TV and watch RÚV with Icelandic subtitles—no menus, no apps, no fuss. This appliance does exactly that.
+I built this project to solve a very specific problem for my elder relatives. Modern smart TVs and streaming apps have become incredibly complex, requiring multiple remotes and confusing menu navigation just to watch the evening news. They just wanted to turn on the TV and watch RÚV with Icelandic subtitles—no menus, no apps, no fuss. This appliance does exactly that.
 
 ## Why this version?
 *   **No UI to break:** There are no menus. It boots straight into the fullscreen stream.
