@@ -8,7 +8,7 @@
 sleep 5
 
 echo "Resolving current RÚV stream URL..."
-STREAM_URL=$(curl -fsS https://geo.spilari.ruv.is/channel/ruv | jq -r '.url // empty')
+STREAM_URL=$(curl -fsS --max-time 10 https://geo.spilari.ruv.is/channel/ruv | jq -r '.url // empty')
 if [ -z "$STREAM_URL" ]; then
   echo "Failed to resolve stream URL, aborting." >&2
   exit 1
