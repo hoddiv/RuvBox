@@ -1,11 +1,19 @@
 #!/bin/bash
 # RÚV Kiosk Launcher
 # This script launches VLC in headless mode (cvlc) pointing to the RÚV stream.
+# The stream URL is resolved at runtime from RÚV's channel API so the kiosk
+# keeps working when the underlying m3u8 URL rotates.
 
-STREAM_URL="https://ruvlive.akamaized.net/out/v1/317f60ed57214a39872eacca6fa96f2d/index.m3u8"
-
-# Wait a moment for audio/video drivers to fully initialize
+# Wait a moment for audio/video drivers and network to fully initialize
 sleep 5
+
+echo "Resolving current RÚV stream URL..."
+STREAM_URL=$(curl -fsS --max-time 10 https://geo.spilari.ruv.is/channel/ruv | jq -r '.url // empty')
+if [ -z "$STREAM_URL" ]; then
+  echo "Failed to resolve stream URL, aborting." >&2
+  exit 1
+fi
+echo "Stream URL: $STREAM_URL"
 
 # Launch VLC:
 # --fullscreen : Fullscreen mode

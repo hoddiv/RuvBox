@@ -9,7 +9,7 @@ fi
 
 echo "Installing VLC and dependencies..."
 apt-get update
-apt-get install -y vlc 
+apt-get install -y vlc curl jq
 
 echo "Making launcher script executable..."
 chmod +x ruv-kiosk.sh
